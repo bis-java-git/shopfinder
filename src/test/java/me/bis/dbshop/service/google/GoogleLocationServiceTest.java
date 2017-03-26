@@ -10,6 +10,9 @@ import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.assertNotNull;
 
+/**
+ * Google Geo finder service test
+ */
 public class GoogleLocationServiceTest {
 
     private GoogleLocationServiceImpl googleLocationService = new GoogleLocationServiceImpl();

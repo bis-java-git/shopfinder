@@ -14,6 +14,9 @@ import java.util.Map;
 import java.util.TreeMap;
 import java.util.concurrent.ConcurrentHashMap;
 
+/**
+ * Shop find service public API
+ */
 @Service
 public class ShopFindServiceImpl implements ShopFindService {
 
@@ -32,8 +35,8 @@ public class ShopFindServiceImpl implements ShopFindService {
 
     @Override
     public Shop findNearestShop(BigDecimal currentLatitude, BigDecimal currentLongitude) {
+        logger.info("findNearestShop latitude {} longitude {} ", currentLatitude, currentLongitude);
         Map<BigDecimal, Shop> distanceMap = new HashMap<>();
-
         shopDataStore.entrySet().forEach(entry -> {
             BigDecimal distance = googleLocatorService.calculateDistance(currentLatitude,
                     currentLongitude,
@@ -43,15 +46,15 @@ public class ShopFindServiceImpl implements ShopFindService {
         });
 
         Map<BigDecimal, Shop> treeMap = new TreeMap<>((o1, o2) -> o1.compareTo(o2));
-
         treeMap.putAll(distanceMap);
-
         Map.Entry<BigDecimal, Shop> shopEntry = treeMap.entrySet().iterator().next();
+        logger.info("findNearestShop shop found {} ", shopEntry.getValue());
         return shopEntry.getValue();
     }
 
     @Override
     public Shop addShop(Shop shop) {
+        logger.info("Shop {} ", shop);
         LatLng latLng = googleLocatorService.GetLatLng(shop.getShopAddress().getPostCode());
         logger.info("LatLng is {} ", latLng);
         shop.setLongitude(latLng.getLongitude());

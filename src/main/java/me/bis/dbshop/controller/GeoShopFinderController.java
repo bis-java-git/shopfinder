@@ -14,10 +14,13 @@ import javax.servlet.http.HttpServletResponse;
 import java.math.BigDecimal;
 import java.util.NoSuchElementException;
 
+/**
+ * Provides Rest support for adding shop address and find nearest shop with latitude and longitude
+ */
 @Controller
-public class ShopController {
+public class GeoShopFinderController {
 
-    final static Logger logger = (Logger) LoggerFactory.getLogger(ShopController.class);
+    final static Logger logger = (Logger) LoggerFactory.getLogger(GeoShopFinderController.class);
 
     @Autowired
     private ShopFindService shopFindService;
@@ -25,7 +28,7 @@ public class ShopController {
     @RequestMapping(value = "/shop", method = RequestMethod.POST)
     @ResponseBody
     public Shop addOrReplaceNewShop(@RequestBody ShopAddRequest shopAddRequest) {
-        logger.info("Add or Replace Shop address is called.");
+        logger.info("/shop POST method {} ", shopAddRequest);
         Shop shop = new Shop();
         shop.setShopName(shopAddRequest.getShopName());
         shop.setShopAddress(shopAddRequest.getShopAddress());
@@ -40,8 +43,7 @@ public class ShopController {
                                 @RequestParam String longitude,
                                 HttpServletResponse response
     ) {
-        logger.info("Find or Replace Shop address is called.");
-
+        logger.info("/shop GET latitude {} longitude {} ", latitude, longitude);
         try {
             return shopFindService.findNearestShop(new BigDecimal(latitude), new BigDecimal(longitude));
         } catch (NoSuchElementException exc) {

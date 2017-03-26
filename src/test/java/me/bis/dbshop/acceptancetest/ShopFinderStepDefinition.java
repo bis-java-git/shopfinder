@@ -19,22 +19,32 @@ import java.util.List;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
-
+/**
+ * Acceptance Step definition for finding shop based on current latitude and longitude
+ * executing commands from gherkin language feature file
+ */
 @ContextConfiguration(classes = ShopApp.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @DirtiesContext
 public class ShopFinderStepDefinition {
 
-    private TestRestTemplate testRestTemplate = new TestRestTemplate();
-
-    private ResponseEntity<Shop> savedShop;
-
-    private ResponseEntity<Shop> shopResponseEntity;
-
-    private static String CR0_SHOP_NAME = "BIS Croydon";
-
     @LocalServerPort
     private int port;
+    private TestRestTemplate testRestTemplate = new TestRestTemplate();
+
+    /**
+     * Part of saving data between definition
+     * Please note this should be part of caching service
+     */
+    private ResponseEntity<Shop> savedShop;
+
+    /**
+     * Part of saving data between definition
+     * Please note this should be part of caching service
+     */
+    private ResponseEntity<Shop> shopResponseEntity;
+
+    private static String EXPECTED_CR0_SHOP_NAME = "BIS Croydon";
 
     private Shop createShop(String shopName,
                             Integer shopNumber,
@@ -68,6 +78,6 @@ public class ShopFinderStepDefinition {
     @Then("^it receives nearest shop$")
     public void it_receives_nearest_shop() throws Throwable {
         assertThat(shopResponseEntity, is(notNullValue()));
-        assertThat(shopResponseEntity.getBody().getShopName(), is(CR0_SHOP_NAME));
+        assertThat(shopResponseEntity.getBody().getShopName(), is(EXPECTED_CR0_SHOP_NAME));
     }
 }

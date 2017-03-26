@@ -12,17 +12,16 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.math.BigDecimal;
-
 import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 
+/**
+ * Integration test for adding or replacing shop address data
+ */
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @DirtiesContext
-public class ShopControllerTest {
-
-    private TestRestTemplate testRestTemplate = new TestRestTemplate();
+public class GeoShopFinderControllerTest {
 
     @LocalServerPort
     private int port;
@@ -45,9 +44,11 @@ public class ShopControllerTest {
 
     private static String TW6_SHOP_POSTCODE = "TW6";
 
-    private BigDecimal CURRENT_LATITUDE = new BigDecimal("51.1424544");
+    private static String CURRENT_LATITUDE = "51.1424544";
 
-    private BigDecimal CURRENT_LONGITUDE = new BigDecimal("-0.0642075");
+    private static String CURRENT_LONGITUDE = "-0.0642075";
+
+    private TestRestTemplate testRestTemplate = new TestRestTemplate();
 
     private Shop createShop(String shopName,
                             Integer shopNumber,
@@ -83,13 +84,11 @@ public class ShopControllerTest {
         response = testRestTemplate.postForEntity("http://localhost:" + port + "/shop", tw6Shop, Shop.class);
         assertThat(response.getBody(), is(notNullValue()));
 
-        ResponseEntity<Shop> findResponse = testRestTemplate.getForEntity("http://localhost:" + port + "/shop/?latitude=" + "51.1424544" + "&longitude=" + "-0.0642075", Shop.class);
+        ResponseEntity<Shop> findResponse = testRestTemplate.getForEntity("http://localhost:" + port + "/shop/?latitude=" + CURRENT_LATITUDE + "&longitude=" + CURRENT_LONGITUDE, Shop.class);
 
         assertThat(findResponse.getStatusCode(), equalTo(HttpStatus.OK));
         assertThat(findResponse.getBody().getShopName(), is(CR0_SHOP_NAME));
         assertThat(findResponse.getBody().getShopAddress().getNumber(), is(CR0_SHOP_NUMBER));
         assertThat(findResponse.getBody().getShopAddress().getPostCode(), is(CR0_SHOP_POSTCODE));
     }
-
-
 }

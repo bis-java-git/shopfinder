@@ -3,6 +3,9 @@ package me.bis.dbshop.domain;
 import java.math.BigDecimal;
 import java.util.Objects;
 
+/**
+ * Holds all Shop address and related data
+ */
 public class Shop {
 
     private String shopName;

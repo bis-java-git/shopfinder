@@ -16,6 +16,11 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.mockito.Mockito.*;
 
+/**
+ * Shop service test for follwoing
+ * Adding shop
+ * Finding nearest shop
+ */
 public class ShopFindServiceTest {
 
     public static final String UNIQUE_NAME_1 = "Unique Name 1";
@@ -133,7 +138,7 @@ public class ShopFindServiceTest {
 
 
     @Test
-    public void findNearestShopTest()  {
+    public void findNearestShopTest() {
         Shop tw6Shop = createAndGetShop(TW6_SHOP_NAME,
                 TW6_SHOP_NUMBER,
                 TW6_POSTCODE,

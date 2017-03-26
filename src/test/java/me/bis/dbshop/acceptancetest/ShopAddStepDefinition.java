@@ -21,6 +21,10 @@ import java.util.List;
 import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 
+/**
+ * Acceptance Step definition for adding shop address execution
+ * executing commands from gherkin language feature file
+ */
 @ContextConfiguration(classes = ShopApp.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @DirtiesContext
@@ -28,11 +32,15 @@ public class ShopAddStepDefinition {
 
     final static Logger logger = (Logger) LoggerFactory.getLogger(ShopAddStepDefinition.class);
 
-    private TestRestTemplate testRestTemplate = new TestRestTemplate();
-
     @LocalServerPort
     private int port;
 
+    private TestRestTemplate testRestTemplate = new TestRestTemplate();
+
+    /**
+     * Part of saving data between definition
+     * Please note this should be part of caching service
+     */
     private ResponseEntity<Shop> savedShop;
 
     private Shop createShop(String shopName,

@@ -2,6 +2,9 @@ package me.bis.dbshop.domain.net;
 
 import me.bis.dbshop.domain.ShopAddress;
 
+/**
+ * Request from client to add shop address details
+ */
 public class ShopAddRequest {
 
     private String shopName;

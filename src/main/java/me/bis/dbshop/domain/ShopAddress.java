@@ -2,6 +2,9 @@ package me.bis.dbshop.domain;
 
 import java.util.Objects;
 
+/**
+ * Holds shop address data
+ */
 public class ShopAddress {
 
     private Integer number;
