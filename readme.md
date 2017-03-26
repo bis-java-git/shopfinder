@@ -11,7 +11,7 @@ How to run DB Shop Finder<br/>
 Since you are reading this file, assumed that you have managed to pull it correctly.<br/>
 
 1. Logon to github with your credential<br/>
-2. <font style="color:blue">git clone https://github.com/bis-java-git/dbshop.git</font><br/>
+2. <font style="color:blue">git clone https://github.com/bis-java-git/shopfinder.git</font><br/>
 3. <font style="color:blue">mvn clean install</font><br/>
 4. <font style="color:blue">mvn spring-boot:run</font><br/>
 
