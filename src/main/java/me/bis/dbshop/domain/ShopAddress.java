@@ -23,16 +23,8 @@ public class ShopAddress {
         return number;
     }
 
-    public void setNumber(Integer number) {
-        this.number = number;
-    }
-
     public String getPostCode() {
         return postCode;
-    }
-
-    public void setPostCode(String postCode) {
-        this.postCode = postCode;
     }
 
     @Override
@@ -51,10 +43,8 @@ public class ShopAddress {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("ShopAddress{");
-        sb.append("number=").append(number);
-        sb.append(", postCode='").append(postCode).append('\'');
-        sb.append('}');
-        return sb.toString();
+        return "ShopAddress{" + "number=" + number +
+                ", postCode='" + postCode + '\'' +
+                '}';
     }
 }

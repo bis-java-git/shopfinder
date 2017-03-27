@@ -20,7 +20,7 @@ import java.util.NoSuchElementException;
 @Controller
 public class GeoShopFinderController {
 
-    final static Logger logger = (Logger) LoggerFactory.getLogger(GeoShopFinderController.class);
+    private final static Logger logger = (Logger) LoggerFactory.getLogger(GeoShopFinderController.class);
 
     @Autowired
     private ShopFindService shopFindService;

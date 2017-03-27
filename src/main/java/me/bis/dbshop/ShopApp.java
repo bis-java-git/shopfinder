@@ -18,6 +18,7 @@ public class ShopApp {
     private static final Logger logger = LoggerFactory.getLogger(ShopApp.class);
 
     public static void main(String[] args) throws Exception {
+        logger.info("Starting ShopApp......");
         SpringApplication.run(ShopApp.class, args);
     }
 }

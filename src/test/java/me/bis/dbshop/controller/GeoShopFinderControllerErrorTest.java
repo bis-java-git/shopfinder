@@ -25,14 +25,11 @@ public class GeoShopFinderControllerErrorTest {
     @LocalServerPort
     private int port;
 
-    private static String CURRENT_LATITUDE = "51.1424544";
-
-    private static String CURRENT_LONGITUDE = "-0.0642075";
-
-    private TestRestTemplate testRestTemplate = new TestRestTemplate();
-
     @Test
     public void findNearestShop404Test() {
+        String CURRENT_LATITUDE = "51.1424544";
+        String CURRENT_LONGITUDE = "-0.0642075";
+        TestRestTemplate testRestTemplate = new TestRestTemplate();
         ResponseEntity<Shop> findResponse = testRestTemplate.getForEntity("http://localhost:" + port + "/shop?latitude=" + CURRENT_LATITUDE + "&longitude=" + CURRENT_LONGITUDE, Shop.class);
         assertThat(findResponse.getStatusCode(), equalTo(HttpStatus.NOT_FOUND));
     }

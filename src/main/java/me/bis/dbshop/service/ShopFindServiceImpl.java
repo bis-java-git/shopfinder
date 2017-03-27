@@ -20,9 +20,9 @@ import java.util.concurrent.ConcurrentHashMap;
 @Service
 public class ShopFindServiceImpl implements ShopFindService {
 
-    final static Logger logger = (Logger) LoggerFactory.getLogger(ShopFindServiceImpl.class);
+    private final static Logger logger = (Logger) LoggerFactory.getLogger(ShopFindServiceImpl.class);
 
-    public static final int INITIAL_CAPACITY = 1000;
+    private static final int INITIAL_CAPACITY = 1000;
 
     private GoogleLocatorService googleLocatorService;
 
@@ -45,7 +45,7 @@ public class ShopFindServiceImpl implements ShopFindService {
             distanceMap.put(distance, entry.getValue());
         });
 
-        Map<BigDecimal, Shop> treeMap = new TreeMap<>((o1, o2) -> o1.compareTo(o2));
+        Map<BigDecimal, Shop> treeMap = new TreeMap<>(BigDecimal::compareTo);
         treeMap.putAll(distanceMap);
         Map.Entry<BigDecimal, Shop> shopEntry = treeMap.entrySet().iterator().next();
         logger.info("findNearestShop shop found {} ", shopEntry.getValue());

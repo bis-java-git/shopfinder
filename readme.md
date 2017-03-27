@@ -25,12 +25,12 @@ Since you are reading this file, assumed that you have managed to pull it correc
 {"shopName":"BIS Balham","shopAddress":{"number":2,"postCode":"SW17"}}<br/>
 
 <font style="color:red">Find shops</font><br/>
-<font style="color:blue">url: localhost:9000/shop?latitude=51.1424544&longitude=-0.0642075</font><br/>
+<font style="color:blue">url: curl -X GET 'http://localhost:9000/shop?latitude=51.1424544&longitude=-0.0642075'</font><br/>
 <font style="color:blue">method: post</font><br/>
 
 <h4>curl script to find shop example:<br /></h4>
 <font style="color:blue"><p>
-curl -H "Content-Type: application/json" -X GET http://localhost:9000/shop?latitude=51.1424544&longitude=-0.0642075
+curl  http://localhost:9000/shop?latitude=51.1424544&longitude=-0.0642075
 </p></font>
 
 <h4>curl script to add shop example:<br /></h4>

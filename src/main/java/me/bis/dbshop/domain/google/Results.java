@@ -88,14 +88,12 @@ public class Results {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("Results{");
-        sb.append("addressComponents=").append(Arrays.toString(addressComponents));
-        sb.append(", formattedAddress='").append(formattedAddress).append('\'');
-        sb.append(", geometry=").append(geometry);
-        sb.append(", types=").append(Arrays.toString(types));
-        sb.append(", partialMatch=").append(partialMatch);
-        sb.append(", placeId='").append(placeId).append('\'');
-        sb.append('}');
-        return sb.toString();
+        return "Results{" + "addressComponents=" + Arrays.toString(addressComponents) +
+                ", formattedAddress='" + formattedAddress + '\'' +
+                ", geometry=" + geometry +
+                ", types=" + Arrays.toString(types) +
+                ", partialMatch=" + partialMatch +
+                ", placeId='" + placeId + '\'' +
+                '}';
     }
 }

@@ -66,12 +66,10 @@ public class Shop {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("Shop{");
-        sb.append("shopName='").append(shopName).append('\'');
-        sb.append(", shopAddress=").append(shopAddress);
-        sb.append(", latitude=").append(latitude);
-        sb.append(", longitude=").append(longitude);
-        sb.append('}');
-        return sb.toString();
+        return "Shop{" + "shopName='" + shopName + '\'' +
+                ", shopAddress=" + shopAddress +
+                ", latitude=" + latitude +
+                ", longitude=" + longitude +
+                '}';
     }
 }

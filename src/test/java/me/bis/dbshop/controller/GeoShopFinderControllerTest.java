@@ -26,28 +26,6 @@ public class GeoShopFinderControllerTest {
     @LocalServerPort
     private int port;
 
-    private static String SW17_SHOP_NAME = "BIS Balham";
-
-    private static String CR0_SHOP_NAME = "BIS Croydon";
-
-    private static String TW6_SHOP_NAME = "BIS Heathrow";
-
-    private static Integer SW17_SHOP_NUMBER = 1;
-
-    private static Integer CR0_SHOP_NUMBER = 2;
-
-    private static Integer TW6_SHOP_NUMBER = 3;
-
-    private static String SW17_SHOP_POSTCODE = "SW17";
-
-    private static String CR0_SHOP_POSTCODE = "CR0";
-
-    private static String TW6_SHOP_POSTCODE = "TW6";
-
-    private static String CURRENT_LATITUDE = "51.1424544";
-
-    private static String CURRENT_LONGITUDE = "-0.0642075";
-
     private TestRestTemplate testRestTemplate = new TestRestTemplate();
 
     private Shop createShop(String shopName,
@@ -61,6 +39,9 @@ public class GeoShopFinderControllerTest {
 
     @Test
     public void addShopTest() throws Exception {
+        String TW6_SHOP_POSTCODE = "TW6";
+        String TW6_SHOP_NAME = "BIS Heathrow";
+        Integer TW6_SHOP_NUMBER = 3;
         Shop shop = createShop(TW6_SHOP_NAME, TW6_SHOP_NUMBER, TW6_SHOP_POSTCODE);
         ResponseEntity<Shop> savedShop = testRestTemplate.postForEntity("http://localhost:" + port + "/shop", shop, Shop.class);
         assertThat(savedShop.getBody(), is(nullValue()));
@@ -72,18 +53,29 @@ public class GeoShopFinderControllerTest {
 
     @Test
     public void findNearestShopTest() {
+        String SW17_SHOP_NAME = "BIS Balham";
+        String SW17_SHOP_POSTCODE = "SW17";
+        Integer SW17_SHOP_NUMBER = 1;
         Shop sw17Shop = createShop(SW17_SHOP_NAME, SW17_SHOP_NUMBER, SW17_SHOP_POSTCODE);
         ResponseEntity<Shop> response = testRestTemplate.postForEntity("http://localhost:" + port + "/shop", sw17Shop, Shop.class);
         assertThat(response.getBody(), is(nullValue()));
 
+        String CR0_SHOP_NAME = "BIS Croydon";
+        Integer CR0_SHOP_NUMBER = 2;
+        String CR0_SHOP_POSTCODE = "CR0";
         Shop cr0Shop = createShop(CR0_SHOP_NAME, CR0_SHOP_NUMBER, CR0_SHOP_POSTCODE);
         response = testRestTemplate.postForEntity("http://localhost:" + port + "/shop", cr0Shop, Shop.class);
         assertThat(response.getBody(), is(nullValue()));
 
+        String TW6_SHOP_POSTCODE = "TW6";
+        Integer TW6_SHOP_NUMBER = 3;
+        String TW6_SHOP_NAME = "BIS Heathrow";
         Shop tw6Shop = createShop(TW6_SHOP_NAME, TW6_SHOP_NUMBER, TW6_SHOP_POSTCODE);
         response = testRestTemplate.postForEntity("http://localhost:" + port + "/shop", tw6Shop, Shop.class);
         assertThat(response.getBody(), is(notNullValue()));
 
+        String CURRENT_LATITUDE = "51.1424544";
+        String CURRENT_LONGITUDE = "-0.0642075";
         ResponseEntity<Shop> findResponse = testRestTemplate.getForEntity("http://localhost:" + port + "/shop/?latitude=" + CURRENT_LATITUDE + "&longitude=" + CURRENT_LONGITUDE, Shop.class);
 
         assertThat(findResponse.getStatusCode(), equalTo(HttpStatus.OK));

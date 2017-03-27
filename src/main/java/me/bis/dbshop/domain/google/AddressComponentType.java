@@ -18,9 +18,7 @@ public enum AddressComponentType {
 
     postal_town("postal_town");
 
-    private final String addressComponentType;
-
     AddressComponentType(final String addressComponentType) {
-        this.addressComponentType = addressComponentType;
+        String addressComponentType1 = addressComponentType;
     }
 }

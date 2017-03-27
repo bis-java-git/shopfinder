@@ -13,13 +13,4 @@ public class Bounds {
     public void setSouthwest(LatLng southwest) {
         this.southwest = southwest;
     }
-
-    @Override
-    public String toString() {
-        final StringBuilder sb = new StringBuilder("Bounds{");
-        sb.append("northeast=").append(northeast);
-        sb.append(", southwest=").append(southwest);
-        sb.append('}');
-        return sb.toString();
-    }
 }

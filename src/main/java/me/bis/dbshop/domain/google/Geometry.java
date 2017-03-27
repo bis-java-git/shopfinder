@@ -35,12 +35,10 @@ public class Geometry {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("Geometry{");
-        sb.append("bounds=").append(bounds);
-        sb.append(", location=").append(location);
-        sb.append(", locationType=").append(locationType);
-        sb.append(", viewport=").append(viewport);
-        sb.append('}');
-        return sb.toString();
+    return "Geometry{" + "bounds=" + bounds +
+                ", location=" + location +
+                ", locationType=" + locationType +
+                ", viewport=" + viewport +
+                '}';
     }
 }
