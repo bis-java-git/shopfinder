@@ -35,7 +35,7 @@ public class Geometry {
 
     @Override
     public String toString() {
-    return "Geometry{" + "bounds=" + bounds +
+        return "Geometry{" + "bounds=" + bounds +
                 ", location=" + location +
                 ", locationType=" + locationType +
                 ", viewport=" + viewport +
