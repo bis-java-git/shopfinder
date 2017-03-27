@@ -30,7 +30,8 @@ Since you are reading this file, assumed that you have managed to pull it correc
 
 <h4>curl script to find shop example:<br /></h4>
 <font style="color:blue"><p>
-curl  http://localhost:9000/shop?latitude=51.1424544&longitude=-0.0642075
+
+
 </p></font>
 
 <h4>curl script to add shop example:<br /></h4>
