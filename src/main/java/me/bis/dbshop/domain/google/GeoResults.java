@@ -5,9 +5,9 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class GeoResults {
 
-    private Results results;
+    private JsonResults results;
 
-    public Results getResults() {
+    public JsonResults getResults() {
         return results;
     }
 }

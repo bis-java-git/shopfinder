@@ -54,12 +54,14 @@ public class ShopAddStepDefinition {
     }
 
     @Test
-    @When("^the shop Manager adds /shop method$")
-    public void the_shop_Manager_calls_shop_POST_method(DataTable dataTable) throws Throwable {
+    @When("^the shop Manager adds /shop$")
+    public void the_shop_Manager_calls_shop(DataTable dataTable) throws Throwable {
         List<List<String>> list = dataTable.raw();
-        Shop shop = createShop(list.get(0).get(0), Integer.parseInt(list.get(0).get(1)), list.get(0).get(2));
-        savedShop = testRestTemplate.postForEntity("http://localhost:" + port + "/shop", shop, Shop.class);
-        logger.info("/shop {} ", shop);
+        for (List<String> aList : list) {
+            Shop shop = createShop(aList.get(0), Integer.parseInt(aList.get(1)), aList.get(2));
+            savedShop = testRestTemplate.postForEntity("http://localhost:" + port + "/shop", shop, Shop.class);
+            logger.info("/shop {} ", shop);
+        }
     }
 
     @Test
@@ -76,8 +78,8 @@ public class ShopAddStepDefinition {
     }
 
     @Test
-    @When("^the shop Manager adds again /shop method$")
-    public void the_shop_Manager_calls_again_shop_POST_method(DataTable dataTable) throws Throwable {
+    @When("^the shop Manager adds again /shop$")
+    public void the_shop_Manager_calls_again_shop(DataTable dataTable) throws Throwable {
         List<List<String>> shopDataList = dataTable.raw();
         for (List<String> addShopData : shopDataList) {
             Shop shop = createShop(addShopData.get(0), Integer.parseInt(addShopData.get(1)), addShopData.get(2));

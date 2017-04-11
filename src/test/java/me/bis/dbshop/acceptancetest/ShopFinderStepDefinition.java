@@ -52,21 +52,10 @@ public class ShopFinderStepDefinition {
     }
 
     @Test
-    @When("^the shop Manager adds  /shop method$")
-    public void the_shop_Manager_adds_shop_POST_method(DataTable dataTable) throws Throwable {
-        List<List<String>> shopDataList = dataTable.raw();
-        for (List<String> addShopData : shopDataList) {
-            Shop shop = createShop(addShopData.get(0), Integer.parseInt(addShopData.get(1)), addShopData.get(2));
-            ResponseEntity<Shop> savedShop = testRestTemplate.postForEntity("http://localhost:" + port + "/shop", shop, Shop.class);
-            assertThat(savedShop, is(notNullValue()));
-        }
-    }
-
-    @Test
-    @When("^the shop Manager finds /shop/find method$")
-    public void the_shop_Manager_finds_shop_find_POST_method(DataTable dataTable) throws Throwable {
+    @When("^the shop Manager finds /shop/find$")
+    public void the_shop_Manager_finds_shop_find(DataTable dataTable) throws Throwable {
         List<List<String>> shopFindParameters = dataTable.raw();
-        shopResponseEntity = testRestTemplate.getForEntity("http://localhost:" + port + "/shop?latitude=" + shopFindParameters.get(0).get(0) + "&longitude=" + shopFindParameters.get(0).get(1), Shop.class);
+        shopResponseEntity = testRestTemplate.getForEntity("http://localhost:" + port + "/shop/?latitude=" + shopFindParameters.get(0).get(0) + "&longitude=" + shopFindParameters.get(0).get(1), Shop.class);
         assertThat(shopResponseEntity, is(notNullValue()));
         logger.info("/shop {} ", shopResponseEntity.getBody());
     }

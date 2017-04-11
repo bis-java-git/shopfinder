@@ -1,9 +1,11 @@
 package me.bis.dbshop.domain.google;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.math.BigDecimal;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class LatLng {
 
     @JsonProperty("lat")
@@ -12,12 +14,12 @@ public class LatLng {
     @JsonProperty("lng")
     private BigDecimal longitude;
 
-    public LatLng() {
+    public  LatLng() {
     }
 
-    public LatLng(BigDecimal latitude, BigDecimal longitude) {
-        this.latitude = latitude;
-        this.longitude = longitude;
+    public LatLng (BigDecimal latitude, BigDecimal longitude) {
+        this.latitude=latitude;
+        this.longitude=longitude;
     }
 
     public BigDecimal getLatitude() {
@@ -26,20 +28,5 @@ public class LatLng {
 
     public BigDecimal getLongitude() {
         return longitude;
-    }
-
-    public void setLatitude(BigDecimal latitude) {
-        this.latitude = latitude;
-    }
-
-    public void setLongitude(BigDecimal longitude) {
-        this.longitude = longitude;
-    }
-
-    @Override
-    public String toString() {
-        return "LatLng{" + "latitude=" + latitude +
-                ", longitude=" + longitude +
-                '}';
     }
 }

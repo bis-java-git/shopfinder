@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 
 public interface  GoogleLocatorService {
 
-    LatLng GetLatLng(String postCode) throws GeoLocatorServiceException;
+    LatLng GetLatLng(String postCode);
 
     BigDecimal calculateDistance(BigDecimal latitudeFrom,
                                         BigDecimal longitudeFrom,
